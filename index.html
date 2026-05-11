@@ -5,7 +5,10 @@
   <title>The Standard Reasoning Company</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="An applied research firm working on reasoning systems. Parent of praetom, cofoundri, and ripley.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23f6f9fc%22/><text x=%2250%22 y=%2268%22 font-size=%2256%22 font-family=%22ui-sans-serif,system-ui%22 font-weight=%22600%22 fill=%22%230a2540%22 text-anchor=%22middle%22>S</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23f6f9fc%22/><text x=%2250%22 y=%2268%22 font-size=%2256%22 font-family=%22DM Sans,ui-sans-serif,system-ui%22 font-weight=%22600%22 fill=%22%230a2540%22 text-anchor=%22middle%22>S</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --background: #f6f9fc;
@@ -21,27 +24,35 @@
     body {
       background: var(--background);
       color: var(--foreground);
-      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-family: "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
       font-size: 17px;
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
-      font-feature-settings: "ss01", "cv11";
     }
 
     .page {
       max-width: 980px;
       margin: 0 auto;
-      padding: 4.5rem 1.5rem 3rem;
+      padding: 7rem 1.5rem 4rem;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 14rem;
+      grid-template-columns: minmax(0, 1fr) 12rem;
       gap: 4rem;
       align-items: start;
     }
 
     /* ────────────── letter (left) ────────────── */
-    .letter h1 {
+    .eyebrow {
+      font-family: "DM Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--foreground-dimmer);
       margin: 0;
+    }
+
+    .letter h1 {
+      margin: 3rem 0 0;
       font-weight: 600;
       letter-spacing: -0.035em;
       line-height: 1.05;
@@ -50,40 +61,53 @@
       text-wrap: balance;
     }
 
-    .eyebrow {
-      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--foreground-dimmer);
-      margin: 0 0 1rem;
-    }
-
     .lede {
-      margin: 1.25rem 0 0;
+      margin: 1.5rem 0 0;
       font-size: 1.0625rem;
       line-height: 1.55;
       color: var(--foreground-dim);
       text-wrap: pretty;
     }
 
+    .letter h2 {
+      margin: 2.5rem 0 0.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: -0.005em;
+      color: var(--foreground);
+    }
+
     .letter p {
-      margin: 1.25rem 0 0;
+      margin: 0.75rem 0 0;
       color: var(--foreground-dim);
       font-size: 1rem;
-      line-height: 1.6;
+      line-height: 1.65;
     }
-    .letter p strong { color: var(--foreground); font-weight: 500; }
+    .letter p strong { color: var(--foreground); font-weight: 600; }
 
-    .letter .lead-in {
-      margin-top: 2.25rem;
+    .projects {
+      list-style: none;
+      padding: 0;
+      margin: 0.75rem 0 0;
+    }
+    .projects > li {
+      padding: 0.25rem 0;
+      color: var(--foreground-dim);
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    .projects .name {
       color: var(--foreground);
       font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s ease, color 0.15s ease;
     }
+    .projects a.name:hover { color: var(--link); border-bottom-color: var(--link); }
 
-    .letter .signoff {
-      margin-top: 2.5rem;
-      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    .signoff {
+      margin-top: 3rem;
+      font-family: "DM Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
       font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.15em;
@@ -93,61 +117,43 @@
     /* ────────────── aside (right) ────────────── */
     .aside {
       position: sticky;
-      top: 4.5rem;
-      font-size: 0.9375rem;
-      line-height: 1.5;
-      color: var(--foreground-dim);
+      top: 7rem;
+      font-family: "DM Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.8125rem;
+      line-height: 1.55;
     }
 
     .aside .label {
-      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
       font-size: 0.65rem;
       text-transform: uppercase;
       letter-spacing: 0.2em;
       color: var(--foreground-dimmer);
-      margin: 0 0 0.75rem;
+      margin: 0 0 0.5rem;
     }
 
-    .tree {
-      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-      font-size: 0.875rem;
-      line-height: 1.85;
+    .aside .block { margin-top: 2rem; }
+    .aside .block:first-child { margin-top: 0; }
+
+    .aside a {
       color: var(--foreground-dim);
-    }
-    .tree .root {
-      color: var(--foreground);
-      font-weight: 500;
-      margin-bottom: 0.25rem;
-    }
-    .tree .glyph { color: var(--foreground-dimmer); user-select: none; }
-    .tree a {
-      color: var(--foreground);
       text-decoration: none;
       border-bottom: 1px solid transparent;
       transition: border-color 0.15s ease, color 0.15s ease;
     }
-    .tree a:hover { color: var(--link); border-bottom-color: var(--link); }
-
-    .aside .block {
-      margin-top: 2rem;
-    }
-    .aside .block a {
-      color: var(--foreground-dim);
-      text-decoration: none;
-      border-bottom: 1px solid var(--border);
-      transition: border-color 0.15s ease, color 0.15s ease;
-    }
-    .aside .block a:hover { color: var(--link); border-bottom-color: var(--link); }
+    .aside a:hover { color: var(--link); border-bottom-color: var(--link); }
 
     /* ────────────── responsive ────────────── */
     @media (max-width: 760px) {
       .page {
         grid-template-columns: 1fr;
         gap: 2.5rem;
-        padding: 2.75rem 1.25rem 2rem;
+        padding: 3.5rem 1.25rem 2rem;
       }
       .aside { position: static; }
-      .letter h1 { font-size: clamp(1.75rem, 6vw, 2.25rem); }
+      .letter h1 {
+        margin-top: 2rem;
+        font-size: clamp(1.75rem, 6vw, 2.25rem);
+      }
     }
   </style>
 </head>
@@ -162,12 +168,20 @@
         An applied research firm building systems that think, and putting them to work in domains where the answer matters more than the demo.
       </p>
 
-      <p class="lead-in">The interesting work right now sits on the other side of the gap between demo and production.</p>
-
+      <h2>Thesis</h2>
       <p>
-        Most of what AI builds today is impressive in a slide and brittle under load. The work that matters is on the other side — <strong>reasoning systems that hold up against operational reality</strong>. Models with enough context to think well. Outputs bound to something that has to work. Loops fast enough to matter.
+        The interesting work right now sits on the other side of the gap between demo and production. Most of what AI builds today is impressive in a slide and brittle under load. The work that matters is on the other side — <strong>reasoning systems that hold up against operational reality</strong>. Models with enough context to think well. Outputs bound to something that has to work. Loops fast enough to matter.
       </p>
 
+      <h2>The work</h2>
+      <p>Three projects right now, each a different surface for the same underlying bet.</p>
+      <ul class="projects">
+        <li><a href="https://praetom.com" class="name">praetom</a> · production intelligence for AI-generated code</li>
+        <li><a href="https://cofoundri.com" class="name">cofoundri</a> · operational infrastructure for the next million companies</li>
+        <li><span class="name">ripley</span> · real-time perception for the road</li>
+      </ul>
+
+      <h2>Posture</h2>
       <p>
         Standard Reasoning is small, independent, and long-horizon. One thing built at a time, taken to the point where it does real work, then written down. No funding round. No press. This page is the marketing channel.
       </p>
@@ -176,15 +190,10 @@
     </article>
 
     <aside class="aside">
-      <p class="label">The work</p>
-      <div class="tree">
-        <div class="root">Standard Reasoning</div>
-        <div><span class="glyph">│</span></div>
-        <div><span class="glyph">├─</span> <a href="https://praetom.com">praetom</a></div>
-        <div><span class="glyph">├─</span> <a href="https://cofoundri.com">cofoundri</a></div>
-        <div><span class="glyph">└─</span> ripley</div>
+      <div class="block">
+        <p class="label">Est.</p>
+        <div>2026</div>
       </div>
-
       <div class="block">
         <p class="label">Contact</p>
         <a href="mailto:hello@standardreasoningcompany.com">hello@standardreasoningcompany.com</a>
