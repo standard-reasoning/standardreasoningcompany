@@ -4,98 +4,228 @@
   <meta charset="utf-8">
   <title>The Standard Reasoning Company</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="An applied research firm. The Standard Reasoning Company is the holding entity behind praetom, cofoundri, and ripley.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 font-family=%22Charter,Georgia,serif%22>S</text></svg>">
+  <meta name="description" content="An applied research firm working on reasoning systems. Parent of praetom, cofoundri, and ripley.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23f6f9fc%22/><text x=%2250%22 y=%2268%22 font-size=%2256%22 font-family=%22ui-sans-serif,system-ui%22 font-weight=%22600%22 fill=%22%230a2540%22 text-anchor=%22middle%22>S</text></svg>">
   <style>
     :root {
-      --ink: #111;
-      --muted: #555;
-      --link: #1a5fb4;
-      --rule: #d6d6d6;
-      --bg: #fdfdfa;
+      --background: #f6f9fc;
+      --foreground: #0a2540;
+      --foreground-dim: #425466;
+      --foreground-dimmer: #8898aa;
+      --border: #e5edf5;
+      --link: #635bff;
     }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
     body {
-      font-family: 'Charter', 'Iowan Old Style', 'Source Serif Pro', Georgia, 'Times New Roman', serif;
-      font-size: 18px;
-      line-height: 1.65;
+      background: var(--background);
+      color: var(--foreground);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
+      font-feature-settings: "ss01", "cv11";
     }
+
     main {
-      max-width: 36rem;
+      max-width: 760px;
       margin: 0 auto;
       padding: 6rem 1.5rem 4rem;
     }
+
+    .eyebrow {
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--foreground-dimmer);
+      margin: 0;
+    }
+
     h1 {
-      font-size: 1.5rem;
+      margin: 2.5rem 0 0;
       font-weight: 600;
-      letter-spacing: 0.01em;
-      margin: 0 0 3rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--rule);
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+      font-size: clamp(2.25rem, 5vw, 3.25rem);
+      color: var(--foreground);
+      text-wrap: balance;
     }
-    p { margin: 0 0 1.25rem; }
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.5rem;
+
+    .lede {
+      margin: 1.5rem 0 0;
+      max-width: 640px;
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      color: var(--foreground-dim);
+      text-wrap: pretty;
     }
-    li { margin: 0 0 0.5rem; }
+
+    section {
+      margin-top: 6rem;
+      border-top: 1px solid var(--border);
+      padding-top: 2.5rem;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+    .section-label .num { color: var(--foreground-dimmer); font-variant-numeric: tabular-nums; }
+    .section-label .name { color: var(--foreground-dim); }
+
+    section p {
+      margin: 0 0 1rem;
+      color: var(--foreground-dim);
+      font-size: 1.0625rem;
+      line-height: 1.6;
+    }
+    section p strong { color: var(--foreground); font-weight: 500; }
+
+    .projects { list-style: none; padding: 0; margin: 0; }
+    .projects > li { padding: 1.5rem 0; border-bottom: 1px solid var(--border); }
+    .projects > li:first-child { padding-top: 0; }
+    .projects > li:last-child { border-bottom: 0; padding-bottom: 0; }
+
+    .project-head {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+    .project-head .name {
+      font-weight: 600;
+      color: var(--foreground);
+      font-size: 1.0625rem;
+    }
+    .project-head .one-liner {
+      color: var(--foreground-dim);
+      font-size: 0.9375rem;
+    }
+    .project-body {
+      color: var(--foreground-dim);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
     a {
-      color: var(--link);
+      color: inherit;
       text-decoration: none;
-      border-bottom: 1px solid currentColor;
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.15s ease, color 0.15s ease;
     }
-    a:hover { color: var(--ink); }
-    .signoff {
-      margin-top: 3rem;
-      color: var(--muted);
-    }
-    .signoff p { margin: 0; }
+    a:hover { color: var(--link); border-color: var(--link); }
+
     footer {
-      max-width: 36rem;
+      max-width: 760px;
       margin: 0 auto;
       padding: 0 1.5rem 3rem;
-      font-size: 0.85rem;
-      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      margin-top: 1rem;
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--foreground-dimmer);
     }
-    footer a { color: var(--muted); }
-    @media (max-width: 480px) {
-      body { font-size: 17px; }
+    footer a { border-bottom-color: transparent; }
+    footer a:hover { border-bottom-color: var(--link); }
+
+    @media (max-width: 600px) {
       main { padding: 3.5rem 1.25rem 2.5rem; }
+      section { margin-top: 4rem; padding-top: 2rem; }
     }
   </style>
 </head>
 <body>
   <main>
-    <h1>The Standard Reasoning Company</h1>
+    <p class="eyebrow">The Standard Reasoning Company · Est. 2026</p>
 
-    <p>A note from Austen,</p>
+    <h1>Reasoning systems for the real world.</h1>
 
-    <p>Standard Reasoning is a holding company for the work I keep finding myself drawn to. The connective thread is reasoning systems &mdash; how we get machines to think well, and where that thinking can do useful work in the world.</p>
+    <p class="lede">
+      An applied research firm building systems that think, and putting them to work in domains where the answer matters more than the demo.
+    </p>
 
-    <p>Right now there are three:</p>
+    <section>
+      <div class="section-label">
+        <span class="num">01</span>
+        <span class="name">Thesis</span>
+      </div>
+      <p>
+        The interesting work right now sits on the other side of the gap between demo and production. <strong>Reasoning systems that hold up against operational reality.</strong>
+      </p>
+      <p>
+        Models with enough context to think well. Outputs bound to something that has to work. Loops fast enough to matter. The Standard Reasoning Company builds for that side of the gap.
+      </p>
+    </section>
 
-    <ul>
-      <li><a href="https://praetom.com">praetom</a> &mdash; production intelligence for AI-generated code</li>
-      <li><a href="https://cofoundri.com">cofoundri</a> &mdash; operational infrastructure for the next million companies</li>
-      <li>ripley &mdash; real-time perception for the road</li>
-    </ul>
+    <section>
+      <div class="section-label">
+        <span class="num">02</span>
+        <span class="name">The work</span>
+      </div>
+      <ul class="projects">
+        <li>
+          <div class="project-head">
+            <a class="name" href="https://praetom.com">praetom</a>
+            <span class="one-liner">· production intelligence for AI-generated code</span>
+          </div>
+          <p class="project-body">
+            A model of the codebase joined with operational reality, queried by the agents writing the software. Coding agents consult production before generation, not after.
+          </p>
+        </li>
+        <li>
+          <div class="project-head">
+            <a class="name" href="https://cofoundri.com">cofoundri</a>
+            <span class="one-liner">· operational infrastructure for the next million companies</span>
+          </div>
+          <p class="project-body">
+            An always-on operational layer for founders, run by agents that know the business and act under bounded authority. The work that keeps a company alive between product decisions.
+          </p>
+        </li>
+        <li>
+          <div class="project-head">
+            <span class="name">ripley</span>
+            <span class="one-liner">· real-time perception for the road</span>
+          </div>
+          <p class="project-body">
+            Continuous spatial awareness for vehicles in motion. Reasoning at the edge, under latency budgets that don't accept a round trip.
+          </p>
+        </li>
+      </ul>
+    </section>
 
-    <p>They look different on the surface. They share a backbone.</p>
-
-    <p>More to come.</p>
-
-    <div class="signoff">
-      <p>Austen DeWolf</p>
-      <p>Founder</p>
-    </div>
+    <section>
+      <div class="section-label">
+        <span class="num">03</span>
+        <span class="name">Posture</span>
+      </div>
+      <p>
+        Small. Independent. Long horizon. One thing built at a time, taken to the point where it does real work, then written down. No funding round. No press. This page is the marketing channel.
+      </p>
+    </section>
   </main>
 
   <footer>
-    <a href="mailto:austen@standardreasoningcompany.com">austen@standardreasoningcompany.com</a>
+    <span>Standard Reasoning · 2026</span>
+    <a href="mailto:hello@standardreasoningcompany.com">hello@standardreasoningcompany.com</a>
   </footer>
 </body>
 </html>
