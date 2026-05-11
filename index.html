@@ -23,209 +23,173 @@
       color: var(--foreground);
       font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
       font-size: 17px;
-      line-height: 1.6;
+      line-height: 1.55;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
       font-feature-settings: "ss01", "cv11";
     }
 
-    main {
-      max-width: 760px;
+    .page {
+      max-width: 980px;
       margin: 0 auto;
-      padding: 6rem 1.5rem 4rem;
+      padding: 4.5rem 1.5rem 3rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 14rem;
+      gap: 4rem;
+      align-items: start;
     }
 
-    .eyebrow {
-      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--foreground-dimmer);
+    /* ────────────── letter (left) ────────────── */
+    .letter h1 {
       margin: 0;
-    }
-
-    h1 {
-      margin: 2.5rem 0 0;
       font-weight: 600;
       letter-spacing: -0.035em;
       line-height: 1.05;
-      font-size: clamp(2.25rem, 5vw, 3.25rem);
+      font-size: clamp(2rem, 3.6vw, 2.75rem);
       color: var(--foreground);
       text-wrap: balance;
     }
 
-    .lede {
-      margin: 1.5rem 0 0;
-      max-width: 640px;
-      font-size: 1.0625rem;
-      line-height: 1.6;
-      color: var(--foreground-dim);
-      text-wrap: pretty;
-    }
-
-    section {
-      margin-top: 6rem;
-      border-top: 1px solid var(--border);
-      padding-top: 2.5rem;
-    }
-
-    .section-label {
-      display: flex;
-      align-items: baseline;
-      gap: 0.75rem;
-      margin-bottom: 1.5rem;
+    .eyebrow {
       font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
       font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.15em;
-    }
-    .section-label .num { color: var(--foreground-dimmer); font-variant-numeric: tabular-nums; }
-    .section-label .name { color: var(--foreground-dim); }
-
-    section p {
+      color: var(--foreground-dimmer);
       margin: 0 0 1rem;
-      color: var(--foreground-dim);
+    }
+
+    .lede {
+      margin: 1.25rem 0 0;
       font-size: 1.0625rem;
+      line-height: 1.55;
+      color: var(--foreground-dim);
+      text-wrap: pretty;
+    }
+
+    .letter p {
+      margin: 1.25rem 0 0;
+      color: var(--foreground-dim);
+      font-size: 1rem;
       line-height: 1.6;
     }
-    section p strong { color: var(--foreground); font-weight: 500; }
+    .letter p strong { color: var(--foreground); font-weight: 500; }
 
-    .projects { list-style: none; padding: 0; margin: 0; }
-    .projects > li { padding: 1.5rem 0; border-bottom: 1px solid var(--border); }
-    .projects > li:first-child { padding-top: 0; }
-    .projects > li:last-child { border-bottom: 0; padding-bottom: 0; }
-
-    .project-head {
-      display: flex;
-      align-items: baseline;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      margin-bottom: 0.5rem;
-    }
-    .project-head .name {
-      font-weight: 600;
+    .letter .lead-in {
+      margin-top: 2.25rem;
       color: var(--foreground);
-      font-size: 1.0625rem;
-    }
-    .project-head .one-liner {
-      color: var(--foreground-dim);
-      font-size: 0.9375rem;
-    }
-    .project-body {
-      color: var(--foreground-dim);
-      font-size: 0.9375rem;
-      line-height: 1.6;
-      margin: 0;
+      font-weight: 500;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-      border-bottom: 1px solid var(--border);
-      transition: border-color 0.15s ease, color 0.15s ease;
-    }
-    a:hover { color: var(--link); border-color: var(--link); }
-
-    footer {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 0 1.5rem 3rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      border-top: 1px solid var(--border);
-      padding-top: 2rem;
-      margin-top: 1rem;
+    .letter .signoff {
+      margin-top: 2.5rem;
       font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
       font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.15em;
       color: var(--foreground-dimmer);
     }
-    footer a { border-bottom-color: transparent; }
-    footer a:hover { border-bottom-color: var(--link); }
 
-    @media (max-width: 600px) {
-      main { padding: 3.5rem 1.25rem 2.5rem; }
-      section { margin-top: 4rem; padding-top: 2rem; }
+    /* ────────────── aside (right) ────────────── */
+    .aside {
+      position: sticky;
+      top: 4.5rem;
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      color: var(--foreground-dim);
+    }
+
+    .aside .label {
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--foreground-dimmer);
+      margin: 0 0 0.75rem;
+    }
+
+    .tree {
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.875rem;
+      line-height: 1.85;
+      color: var(--foreground-dim);
+    }
+    .tree .root {
+      color: var(--foreground);
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+    .tree .glyph { color: var(--foreground-dimmer); user-select: none; }
+    .tree a {
+      color: var(--foreground);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+    .tree a:hover { color: var(--link); border-bottom-color: var(--link); }
+
+    .aside .block {
+      margin-top: 2rem;
+    }
+    .aside .block a {
+      color: var(--foreground-dim);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+    .aside .block a:hover { color: var(--link); border-bottom-color: var(--link); }
+
+    /* ────────────── responsive ────────────── */
+    @media (max-width: 760px) {
+      .page {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding: 2.75rem 1.25rem 2rem;
+      }
+      .aside { position: static; }
+      .letter h1 { font-size: clamp(1.75rem, 6vw, 2.25rem); }
     }
   </style>
 </head>
 <body>
-  <main>
-    <p class="eyebrow">The Standard Reasoning Company · Est. 2026</p>
+  <div class="page">
+    <article class="letter">
+      <p class="eyebrow">The Standard Reasoning Company · Est. 2026</p>
 
-    <h1>Reasoning systems for the real world.</h1>
+      <h1>Reasoning systems for the real world.</h1>
 
-    <p class="lede">
-      An applied research firm building systems that think, and putting them to work in domains where the answer matters more than the demo.
-    </p>
-
-    <section>
-      <div class="section-label">
-        <span class="num">01</span>
-        <span class="name">Thesis</span>
-      </div>
-      <p>
-        The interesting work right now sits on the other side of the gap between demo and production. <strong>Reasoning systems that hold up against operational reality.</strong>
+      <p class="lede">
+        An applied research firm building systems that think, and putting them to work in domains where the answer matters more than the demo.
       </p>
+
+      <p class="lead-in">The interesting work right now sits on the other side of the gap between demo and production.</p>
+
       <p>
-        Models with enough context to think well. Outputs bound to something that has to work. Loops fast enough to matter. The Standard Reasoning Company builds for that side of the gap.
+        Most of what AI builds today is impressive in a slide and brittle under load. The work that matters is on the other side — <strong>reasoning systems that hold up against operational reality</strong>. Models with enough context to think well. Outputs bound to something that has to work. Loops fast enough to matter.
       </p>
-    </section>
 
-    <section>
-      <div class="section-label">
-        <span class="num">02</span>
-        <span class="name">The work</span>
-      </div>
-      <ul class="projects">
-        <li>
-          <div class="project-head">
-            <a class="name" href="https://praetom.com">praetom</a>
-            <span class="one-liner">· production intelligence for AI-generated code</span>
-          </div>
-          <p class="project-body">
-            A model of the codebase joined with operational reality, queried by the agents writing the software. Coding agents consult production before generation, not after.
-          </p>
-        </li>
-        <li>
-          <div class="project-head">
-            <a class="name" href="https://cofoundri.com">cofoundri</a>
-            <span class="one-liner">· operational infrastructure for the next million companies</span>
-          </div>
-          <p class="project-body">
-            An always-on operational layer for founders, run by agents that know the business and act under bounded authority. The work that keeps a company alive between product decisions.
-          </p>
-        </li>
-        <li>
-          <div class="project-head">
-            <span class="name">ripley</span>
-            <span class="one-liner">· real-time perception for the road</span>
-          </div>
-          <p class="project-body">
-            Continuous spatial awareness for vehicles in motion. Reasoning at the edge, under latency budgets that don't accept a round trip.
-          </p>
-        </li>
-      </ul>
-    </section>
-
-    <section>
-      <div class="section-label">
-        <span class="num">03</span>
-        <span class="name">Posture</span>
-      </div>
       <p>
-        Small. Independent. Long horizon. One thing built at a time, taken to the point where it does real work, then written down. No funding round. No press. This page is the marketing channel.
+        Standard Reasoning is small, independent, and long-horizon. One thing built at a time, taken to the point where it does real work, then written down. No funding round. No press. This page is the marketing channel.
       </p>
-    </section>
-  </main>
 
-  <footer>
-    <span>Standard Reasoning · 2026</span>
-    <a href="mailto:hello@standardreasoningcompany.com">hello@standardreasoningcompany.com</a>
-  </footer>
+      <p class="signoff">— Standard Reasoning · 2026</p>
+    </article>
+
+    <aside class="aside">
+      <p class="label">The work</p>
+      <div class="tree">
+        <div class="root">Standard Reasoning</div>
+        <div><span class="glyph">│</span></div>
+        <div><span class="glyph">├─</span> <a href="https://praetom.com">praetom</a></div>
+        <div><span class="glyph">├─</span> <a href="https://cofoundri.com">cofoundri</a></div>
+        <div><span class="glyph">└─</span> ripley</div>
+      </div>
+
+      <div class="block">
+        <p class="label">Contact</p>
+        <a href="mailto:hello@standardreasoningcompany.com">hello@standardreasoningcompany.com</a>
+      </div>
+    </aside>
+  </div>
 </body>
 </html>
