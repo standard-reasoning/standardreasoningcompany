@@ -4,229 +4,190 @@
   <meta charset="utf-8">
   <title>The Standard Reasoning Company</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="An applied research firm working on reasoning systems. Parent of praetom, cofoundri, and ripley.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23f6f9fc%22/><text x=%2250%22 y=%2268%22 font-size=%2256%22 font-family=%22DM Sans,ui-sans-serif,system-ui%22 font-weight=%22600%22 fill=%22%230a2540%22 text-anchor=%22middle%22>S</text></svg>">
+  <meta name="description" content="An independent holding company. Currently building Praetom and Antevant.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230f1113%22/><text x=%2250%22 y=%2270%22 font-size=%2260%22 font-family=%22Fraunces,Georgia,serif%22 font-weight=%22600%22 fill=%22%23e4e6e8%22 text-anchor=%22middle%22>S</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,500;9..144,600;9..144,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --background: #f6f9fc;
-      --foreground: #1a1a1a;
-      --foreground-dim: #525252;
-      --foreground-dimmer: #737373;
-      --border: #e5edf5;
-      --link: #635bff;
+      --paper: #0f1113;
+      --ink: #e4e6e8;
+      --ink-dim: #9aa0a4;
+      --ink-dimmer: #5a6065;
+      --rule: #22262b;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
     body {
-      background: var(--background);
-      color: var(--foreground);
+      background: var(--paper);
+      color: var(--ink);
       font-family: "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-      font-size: 17px;
+      font-size: 15px;
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
+      position: relative;
+      min-height: 100vh;
     }
+    .page { position: relative; z-index: 1; }
 
     .page {
-      max-width: 760px;
+      max-width: 780px;
       margin: 0 auto;
-      padding: 7rem 1.5rem 9rem;
+      padding: 5rem 1.75rem 3rem;
     }
 
-    /* ────────────── letter (left) ────────────── */
     .wordmark {
+      margin: 0 0 1.5rem;
       font-family: "Fraunces", "Bodoni Moda", "Source Serif Pro", ui-serif, Georgia, serif;
       font-weight: 700;
       font-size: clamp(2.25rem, 3.6vw, 3rem);
       letter-spacing: -0.015em;
-      color: var(--foreground);
-      margin: 0;
       line-height: 1;
+      color: var(--ink);
     }
 
-    .lede {
-      margin: 1.5rem 0 0;
+    .frame {
+      margin: 0 0 4rem;
       font-size: 1.0625rem;
-      line-height: 1.55;
-      color: var(--foreground-dim);
-      text-wrap: pretty;
+      line-height: 1.5;
+      color: var(--ink-dim);
+      max-width: 38rem;
     }
 
-    .letter h2 {
-      margin: 2.75rem 0 0.875rem;
-      font-family: "DM Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-      font-weight: 500;
-      font-size: 0.875rem;
-      letter-spacing: -0.005em;
-      text-transform: lowercase;
-      color: var(--foreground);
-    }
-
-    .letter p {
-      margin: 0.75rem 0 0;
-      color: var(--foreground-dim);
-      font-size: 1rem;
-      line-height: 1.65;
-    }
-    .letter p strong { color: var(--foreground); font-weight: 600; }
-
-    .projects {
+    .work {
       list-style: none;
+      margin: 0;
       padding: 0;
-      margin: 1rem 0 0;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.5rem;
+      border-top: 1px solid var(--rule);
     }
-    .projects > li {
-      background: #ffffff;
-      padding: 0.75rem 0.875rem;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-      box-shadow:
-        0 1px 2px rgba(50, 50, 93, 0.06),
-        0 0 0 1px rgba(50, 50, 93, 0.04);
-      border-radius: 4px;
-    }
-    .projects > li:hover {
-      transform: translateY(-1px);
-      box-shadow:
-        0 4px 12px -2px rgba(50, 50, 93, 0.12),
-        0 0 0 1px rgba(50, 50, 93, 0.06);
-    }
-    .projects .name {
-      display: inline-block;
-      color: var(--foreground);
-      font-weight: 600;
-      font-size: 0.875rem;
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.15s ease, color 0.15s ease;
-    }
-    .projects a.name:hover { color: var(--link); border-bottom-color: var(--link); }
-    .projects .desc {
-      margin: 0.25rem 0 0;
-      color: var(--foreground-dim);
-      font-size: 0.8125rem;
-      line-height: 1.4;
-    }
-
-    @media (max-width: 600px) {
-      .projects { grid-template-columns: 1fr; }
-    }
-
-    .signoff {
-      margin-top: 3rem;
+    .work > li { /* year group */ }
+    .work .year {
+      background: #1a1d20;
+      color: var(--ink);
       font-family: "DM Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--foreground-dimmer);
-    }
-
-    /* ────────────── fixed footer ────────────── */
-    .site-footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 100px;
-      background: #171717;
-      color: #d4d4d4;
-      font-family: "DM Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-      font-size: 0.8125rem;
-      line-height: 1.4;
-      z-index: 10;
-      box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.08);
-    }
-
-    .site-footer .inner {
-      max-width: 980px;
-      height: 100%;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-    }
-
-    .site-footer .block .label {
-      font-size: 0.65rem;
-      text-transform: uppercase;
+      font-size: 0.5625rem;
+      font-weight: 500;
       letter-spacing: 0.2em;
-      color: #737373;
-      margin: 0 0 0.375rem;
+      padding: 0.1875rem 0 0.1875rem 0.875rem;
     }
+    .work .row {
+      display: grid;
+      grid-template-columns: 9rem 1fr auto;
+      align-items: baseline;
+      gap: 1.5rem;
+      padding: 0.625rem 0 0.625rem 0.875rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .work .name {
+      color: var(--ink);
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+    .work a.name {
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s ease;
+    }
+    .work a.name:hover { border-bottom-color: var(--ink); }
+    .work .desc {
+      margin: 0;
+      color: var(--ink-dim);
+      font-size: 0.8125rem;
+    }
+    .work .status {
+      font-family: "DM Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .work .shelved .name,
+    .work .shelved .desc,
+    .work .shelved .status { color: var(--ink-dimmer); }
 
-    .site-footer a {
-      color: #e5e5e5;
+    .footer {
+      margin-top: 5rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1.5rem;
+      font-family: "DM Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+    }
+    .footer a {
+      color: var(--ink-dim);
       text-decoration: none;
       border-bottom: 1px solid transparent;
       transition: border-color 0.15s ease, color 0.15s ease;
     }
-    .site-footer a:hover { color: #ffffff; border-bottom-color: #ffffff; }
+    .footer a:hover {
+      color: var(--ink);
+      border-bottom-color: var(--ink);
+    }
 
-    /* ────────────── responsive ────────────── */
-    @media (max-width: 760px) {
-      .page {
-        padding: 3.5rem 1.25rem 9rem;
+    @media (max-width: 640px) {
+      .page { padding: 3.5rem 1.25rem 2.5rem; }
+      .work > li {
+        grid-template-columns: 1fr auto;
+        gap: 0.25rem 1rem;
       }
-      .site-footer .inner {
-        gap: 1.25rem;
-      }
+      .work .desc { grid-column: 1 / -1; }
+      .footer { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <article class="letter">
-      <h1 class="wordmark">The Standard Reasoning Company</h1>
+  <main class="page">
+    <h1 class="wordmark">The Standard Reasoning Company</h1>
+    <p class="frame">reasoning systems for production.</p>
 
-      <h2>Thesis</h2>
-      <p>
-        Reasoning systems for the real world. The interesting work right now sits on the other side of the gap between demo and production. Most of what AI builds today is impressive in a slide and brittle under load. The work that matters is on the other side — <strong>reasoning systems that hold up against operational reality</strong>. Models with enough context to think well. Outputs bound to something that has to work. Loops fast enough to matter.
-      </p>
-
-      <h2>The work</h2>
-      <p>Three projects right now, each a different surface for the same underlying bet.</p>
-      <ul class="projects">
-        <li>
-          <a href="https://praetom.com" class="name">praetom</a>
+    <ul class="work">
+      <li>
+        <div class="year">2026</div>
+        <div class="row">
+          <a class="name" href="https://praetom.com">praetom</a>
           <p class="desc">Production intelligence for AI-generated code.</p>
-        </li>
-        <li>
-          <a href="https://cofoundri.com" class="name">cofoundri</a>
-          <p class="desc">Operational infrastructure for the next million companies.</p>
-        </li>
-        <li>
-          <a href="https://antevant.com" class="name">antevant</a>
+          <span class="status">Building</span>
+        </div>
+        <div class="row">
+          <a class="name" href="https://antevant.com">antevant</a>
           <p class="desc">Real-time perception for the road.</p>
-        </li>
-      </ul>
+          <span class="status">Building</span>
+        </div>
+      </li>
+      <li class="shelved">
+        <div class="year">2019</div>
+        <div class="row">
+          <span class="name">retold</span>
+          <p class="desc">Live audio, archived.</p>
+          <span class="status">Shelved</span>
+        </div>
+        <div class="row">
+          <span class="name">tiptapp</span>
+          <p class="desc">Tap-to-tip payments for hospitality.</p>
+          <span class="status">Shelved</span>
+        </div>
+      </li>
+      <li class="shelved">
+        <div class="year">2016</div>
+        <div class="row">
+          <span class="name">flatly</span>
+          <p class="desc">Property management for small landlords.</p>
+          <span class="status">Shelved</span>
+        </div>
+      </li>
+    </ul>
 
-      <h2>Posture</h2>
-      <p>
-        Standard Reasoning is small, independent, and long-horizon. One thing built at a time, taken to the point where it does real work, then written down. No funding round. No press. This page is the marketing channel.
-      </p>
-
-    </article>
-  </div>
-
-  <footer class="site-footer">
-    <div class="inner">
-      <div class="block">
-        <p class="label">Established</p>
-        <div>2026</div>
-      </div>
-      <div class="block">
-        <p class="label">Contact</p>
-        <a href="mailto:hello@standardreasoning.com">hello@standardreasoning.com</a>
-      </div>
-    </div>
-  </footer>
+    <footer class="footer">
+      <span>Est. 2026</span>
+      <a href="mailto:hello@standardreasoning.com">hello@standardreasoning.com</a>
+    </footer>
+  </main>
 </body>
 </html>
