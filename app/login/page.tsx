@@ -35,7 +35,14 @@ function LoginForm() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(searchParams.get("error"));
 
-  function linkTo(next = "/account") {
+  // Where to land after signing in. Same-origin paths only, the same guard
+  // /auth/verify applies, so the consent screen can send a person here and
+  // get them back.
+  const rawNext = searchParams.get("next") ?? "/account";
+  const after =
+    rawNext.startsWith("/") && !rawNext.startsWith("//") ? rawNext : "/account";
+
+  function linkTo(next = after) {
     return verifyUrl(window.location.origin, next);
   }
 
@@ -105,7 +112,7 @@ function LoginForm() {
       setError(readable(error.message));
       return;
     }
-    router.push("/account");
+    router.push(after);
     router.refresh();
   }
 
